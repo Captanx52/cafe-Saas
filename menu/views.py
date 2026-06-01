@@ -4,8 +4,15 @@ from rest_framework.response import Response
 from .models import Category
 from .serializers import CategorySerializer
 
+from rest_framework.permissions import IsAuthenticated
+from rest_framework_simplejwt.authentication import JWTAuthentication
+
 
 class MenuAPIView(APIView):
+
+    authentication_classes = [JWTAuthentication]
+
+    permission_classes = [IsAuthenticated]
 
     def get(self, request):
 
